@@ -86,7 +86,7 @@ function Skills() {
       <nav className="nav-bar">
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
-        <Link to="/projects">Endevours</Link>
+        <Link to="/projects">Endeavors</Link>
       </nav>
 
       {/* Skills Section */}
