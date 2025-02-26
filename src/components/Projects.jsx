@@ -5,9 +5,9 @@ const experiences = [
   {
     company: "Election Systems & Software",
     role: "Software Developer",
-    duration: "May 2025 - Present",
+    duration: "May 2024 - Present",
     description: [
-      "At Election Systems & Software (ES&S), I develop and optimize scalable software solutions for voter registration and election management systems. My work includes designing and enhancing front-end components, implementing RESTful APIs, optimizing SSRS reports, and improving system performance. I collaborate with cross-functional teams to integrate backend services, automate testing using Jest, JUnit, and Postman, and ensure seamless deployments through version control and CI/CD pipelines. My contributions have led to improved system efficiency, reduced page load times, and enhanced data visualization for election-related applications."
+      "At Election Systems & Software (ES&S), I develop and optimize scalable software solutions for voter registration and election management systems. My work includes designing and developing front-end components, implementing RESTful APIs, optimizing SSRS reports, and improving system performance. I collaborate with cross-functional teams to integrate backend services, automate testing using Jest, JUnit, and Postman, and ensure seamless deployments through version control and CI/CD pipelines. My contributions have led to improved system efficiency, reduced page load times, and enhanced data visualization for election-related application."
     ],
     image: "/images/ess.jpg", // Update with actual image path
   },
