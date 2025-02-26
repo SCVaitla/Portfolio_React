@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;600&family=Exo+2:wght@300;400;600&family=Orbitron:wght@400;600&display=swap');
+
+/* Apply Sleek Futuristic Font */
+body {
+  font-family: 'Rajdhani', 'Exo 2', 'Orbitron', sans-serif;
+}
+
+/* General Page Styling */
+.experience-projects-page {
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+  color: #fff;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 3.5rem;
+  margin-top: 60px;
+  margin-bottom:60px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Experience Section */
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.experience-card {
+  background-color: #1e1e1e;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.experience-card:hover {
+  transform: scale(1.02);
+}
+
+.experience-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+/* Company Name Styling */
+.company-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00AEEF;
+}
+
+.role {
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #ddd;
+}
+
+.duration {
+  font-style: italic;
+  color: #aaa;
+  font-size: 1rem;
+}
+
+.experience-details {
+  flex: 1;
+}
+
+.experience-details ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.experience-details li {
+  font-size: 1rem;
+  color: #bbb;
+}
+
+/* Projects Section */
+.projects-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project-card {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+}
+
+.experience-list {
+  list-style-type: none; /* Removes bullet points */
+  padding-left: 0; /* Removes default left padding */
+}
+
+
+.project-title {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #f7c948;
+}
+
+.project-description {
+  font-size: 1rem;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+.more-projects-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 40px auto;
+  color: #e0e0e0;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.more-projects-link:hover {
+  color: #0040ff;
+  transform: scale(1.05);
+}
+
+.more-projects-link i {
+  font-size: 1.5rem;
+}

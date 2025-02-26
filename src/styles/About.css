@@ -1,0 +1,179 @@
+/* About Page Layout */
+.about-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #0f131e;
+  height: 100vh;
+  padding-top: 50px;
+  color: white;
+}
+
+/* Navigation Bar */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  right: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: tomato;
+}
+
+/* About container layout */
+.about-container {
+  display: flex;
+  width: 90%;
+  min-width: 200px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  margin: 0 auto;
+  padding: 50px 20px;
+  height: 70vh;
+}
+
+/* Left side content */
+.about-content {
+  flex: 1;
+  min-width: 45%;
+  padding: 20px;
+}
+
+.about-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.about-content p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #e0e0e0;
+  min-width: 60px;
+  max-width: 600px;
+}
+
+.about-text {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-left: 80px;
+  color: #e0e0e0;
+  min-width: 60px;
+  max-width: 700px;
+}
+
+/* Right side carousel */
+.education-carousel {
+  flex: 1;
+  max-width: 400px;
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.education-carousel img {
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* Caption styling */
+.carousel-caption {
+  position: relative;
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+  padding: 0;
+  position: static;
+  font-size: 1.5rem;
+}
+
+.carousel-caption h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.carousel-caption p {
+  font-size: 1.2rem;
+}
+
+/* Navigation Arrows */
+.carousel-control-prev, .carousel-control-next {
+  width: 40px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-control-prev {
+  left: -50px;
+  position: fixed; /* Keep arrow position fixed */
+}
+
+.carousel-control-next {
+  right: -50px;
+  position: fixed; /* Keep arrow position fixed */
+}
+
+/* Add hover effect */
+.carousel-control-prev:hover, .carousel-control-next:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/* Update responsive design */
+@media (max-width: 900px) {
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-content, .education-carousel {
+    max-width: 100%;
+  }
+
+  .social-sidebar {
+    flex-direction: row;
+    position: static;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+/* Social Media Sidebar */
+.social-sidebar {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.social-sidebar a {
+  color: white;
+  transition: 0.3s ease;
+}
+
+.social-sidebar a:hover {
+  color: 	#0040ff; /* Blue hover effect */
+  transform: scale(1.1);
+}

@@ -1,0 +1,108 @@
+/* index.css */
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  background-color: #0f131e;
+  font-family: 'Didact Gothic', sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Header Section */
+.header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Navbar */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 20px;
+  display: flex;
+  gap: 3rem;
+}
+
+.nav-bar a {
+  text-decoration: none;
+  font-size: 24px;
+  color: white;
+  position: relative;
+  transition: 0.3s ease;
+}
+
+.nav-bar a:hover {
+  color: tomato;
+}
+
+/* Typing Animation */
+.animated-text {
+  font-size: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.animated-text.done {
+  border-right: none; /* Remove the cursor when typing is complete */
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Profile Image Glow */
+.profile-image {
+  width: 250px !important;  /* Increase the size (Adjust as needed) */
+  height: 250px; /* Ensure it's a perfect circle */
+  border-radius: 100%;
+  box-shadow: 0px 0px 40px 2px rgba(255, 255, 255, 0.8);
+  width: 150px;
+  margin-bottom: 20px;
+  animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0px 0px 40px 2px rgba(233, 76, 233, 0.8);
+  }
+  to {
+    box-shadow: 0px 0px 60px 5px rgba(76, 233, 110, 0.8);
+  }
+}
+
+.cursor {
+  font-weight: bold;
+  display: inline-block;
+  width: 8px;
+  background-color: white;
+  margin-left: 5px;
+}
+
+.blink {
+  animation: blink-animation 0.8s step-end infinite;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes blink-animation {
+  50% {
+    opacity: 0;
+  }
+}
+
