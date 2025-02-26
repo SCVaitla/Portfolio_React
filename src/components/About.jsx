@@ -8,7 +8,7 @@ function About() {
       {/* Navigation Bar */}
       <nav className="nav-bar">
         <Link to="/" className="nav-link">Home</Link>
-        <Link to="/projects" className="nav-link">Endevours</Link>
+        <Link to="/projects" className="nav-link">Endeavors</Link>
         <Link to="/skills" className="nav-link">Skills</Link>
       </nav>
 
