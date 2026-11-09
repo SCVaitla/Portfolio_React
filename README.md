@@ -19,6 +19,9 @@ A modern, responsive portfolio website built with React, showcasing my professio
 - CSS3 for styling and animations
 - Font Awesome for icons
 
+## Updating content
+All text on the site (experience, projects, education, skills, links) lives in `src/data/profile.js`. Edit that one file and the pages update automatically.
+
 ## Live Demo
 Visit the live site: https://portfolio-scv.vercel.app
 

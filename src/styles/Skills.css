@@ -1,186 +1,59 @@
-@import '@fortawesome/fontawesome-free/css/all.min.css';
-
-.skills-page {
+.skills {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 4vw, 2rem) 4rem;
   text-align: center;
-  background-color: #0f131e;
-  color: white;
-  min-height: 100vh;
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
-/* Navigation Bar */
-.nav-bar {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  font-size: 18px;
-  margin-bottom: 20px;
+.skills__category {
+  margin-bottom: 3rem;
 }
 
-.nav-bar a {
-  color: white;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
-.nav-bar a:hover {
-  color: tomato;
-}
-
-/* Skills Section */
-.skills-container h1 {
-  font-size: 3.5rem;
-  margin-bottom: 50px;
-}
-
-.skills-container p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
-
-/* Category Titles */
-.category-title {
+.skills__category-title {
   font-size: 1.5rem;
-  color: tomato;
-  margin-bottom: 10px;
+  color: var(--accent);
+  margin: 0 0 1.5rem;
 }
 
-/* Grid Layout */
-/* Skill Section Headers */
-.skills-container {
-  margin-top: 10px; /* Increased spacing from header */
-  padding: 50px 0; /* More padding for better spacing */
-  text-align: center;
-}
-
-/* Section Headers with More Space */
-.skill-section {
-  margin-bottom: 1000000000px; /* Increased spacing between sections */
-}
-
-.category-title {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-/* Section Titles */
-.skill-section h2 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #ff6b6b;
-  margin-bottom: 40px; /* More space below section titles */
-}
-
-/* Skill Grid Layout */
-.skills-grid {
+.skills__grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Ensures proper spacing */
-  gap: 50px; /* Increased spacing between skill boxes */
+  justify-content: center;
+  gap: clamp(0.85rem, 2.5vw, 1.75rem);
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* Skill Box */
 .skill-box {
+  --skill-color: #333;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  width: 130px;
-  height: 130px;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.1); /* Subtle background */
+  gap: 0.6rem;
+  width: clamp(96px, 26vw, 124px);
+  aspect-ratio: 1 / 1;
+  padding: 0.75rem;
+  border-radius: 14px;
+  background: var(--skill-color);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Ensure Icons are Centered */
-.skill-box img {
-  width: 70%;
-  height: auto;
-  object-fit: contain;  
-}
-.skill-box i {
-  font-size: 40px;
-  color: white;
-}
-
-/* Specific styling for .NET icon */
-.skill-box i.fas.fa-net.skill-icon {
-  font-size: 60px; /* Adjust this value as needed */
-  margin-bottom: 5px;
-}
-
-/* Optional: adjust the text size for .NET */
-.skill-box:has(i.fas.fa-net) .skill-name {
-  font-size: 25px;
-  margin-top: 0px;
-}
-
-/* Specific styling for Redux icon */
-.skill-box i.fas.fa-redux.skill-icon {
-  font-size: 60px; /* Increase this value to make the icon bigger */
-}
-
-/* Adjust the name text size if needed */
-.skill-box:has(i.fas.fa-redux) .skill-name {
-  font-size: 25px;
-  margin-top: 10px;
-}
-
-.skill-box:has(i.fas.fa-rest.api.skill-icon) .skill-name {
-  font-size: 25px;
-  margin-top: 10px;
-}
-
-.skill-box:has(i.fas.fa-postman.skill-icon) .skill-name {
-  font-size: 25px;
-  margin-top: 10px;
-}
-
-.skill-box:has(i.fas.fa-JUnit.skill-icon) .skill-name {
-  font-size: 25px;
-  margin-top: 10px;
-}
-
-.skill-box:has(i.fas.fa-Cypress.skill-icon) .skill-name {
-  font-size: 25px;
-  margin-top: 8px;
-}
-
-.skill-box:has(i.fas.fa-travis-ci.skill-icon) .skill-name {
-
-  font-size: 50px;
-  margin-top: 10px;
-}
-
-.skill-box:has(i.fas.fa-Swagger-UI.skill-icon) .skill-name {
-  font-size: 25px;
-  margin-top: 10px;
-}
-
-.skill-box:has(i.fas.fa-Jest.skill-icon) .skill-name {
-  font-size: 25px;
-  margin-top: 10px;
-}
-
-
-
-/* Hover Effect */
 .skill-box:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 22px rgba(255, 99, 71, 0.4);
 }
 
-/* Space Out Each Section */
-.languages-frameworks { margin-bottom: 100px; }
-.web-frontend { margin-bottom: 100px; }
-.database { margin-bottom: 100px; }
-.cloud-monitoring { margin-bottom: 100px; }
-.testing-ci { margin-bottom: 100px; }
-.data-visualization { margin-bottom: 100px; }
-.tools-version-control { margin-bottom: 100px; }
+.skill-box__icon {
+  font-size: 2.2rem;
+  color: #fff;
+}
+
+.skill-box__name {
+  font-size: 0.92rem;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}

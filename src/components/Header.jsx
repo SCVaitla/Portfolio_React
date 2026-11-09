@@ -1,68 +1,65 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
+import SocialLinks from "./SocialLinks";
+import { profile } from "../data/profile";
 
-import "../index.css";
+const TYPE_MS = 90;
+const DELETE_MS = 45;
+const HOLD_MS = 1600;
 
-
-function Header() {
+// Types each role, holds, deletes, and moves to the next one.
+function useTypewriter(words) {
   const [text, setText] = useState("");
-  const [showCursor, setShowCursor] = useState(true);
-  const fullText = "Software Developer";
-
+  const [wordIndex, setWordIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    let currentIndex = 0;
+    const word = words[wordIndex % words.length];
+    let delay = deleting ? DELETE_MS : TYPE_MS;
+    if (!deleting && text === word) delay = HOLD_MS;
 
-    const typingInterval = setInterval(() => {
-      if (currentIndex < fullText.length) {
-        setText(fullText.substring(0, currentIndex + 1));
-        currentIndex++;
+    const timer = setTimeout(() => {
+      if (!deleting && text === word) {
+        setDeleting(true);
+      } else if (deleting && text === "") {
+        setDeleting(false);
+        setWordIndex((i) => i + 1);
       } else {
-        clearInterval(typingInterval);
-        setTimeout(() => setShowCursor(false), 300); // Removes cursor 300ms after typing
+        setText(word.slice(0, text.length + (deleting ? -1 : 1)));
       }
-    }, 150);
+    }, delay);
 
-    return () => clearInterval(typingInterval);
-  }, []);
+    return () => clearTimeout(timer);
+  }, [text, deleting, wordIndex, words]);
+
+  return text;
+}
+
+function Header() {
+  const text = useTypewriter(profile.roles);
 
   return (
-
-    <header className="header">
-
-      <div className="social-sidebar">
-        <a href="https://www.linkedin.com/in/saicharith-vaitla-a21739235/" target="_blank">
-          <i className="fab fa-linkedin fa-3x"></i>
-        </a>
-        <a href="https://github.com/SCVaitla" target="_blank">
-          <i className="fab fa-github fa-3x"></i>
-        </a>
-        <a href="mailto:svaitla3@huskers.unl.edu">
-          <i className="fas fa-envelope fa-3x"></i>
-        </a>
-      </div>
-      {/* Navigation Bar */}
-
-      <nav className="nav-bar">
-        <Link to="/about">About</Link>
-        <Link to="/projects">Endeavors</Link>
-        <Link to="/skills">Skills</Link>
-      </nav>
-
-      {/* Profile Image */}
-      <img src="/images/profile.jpg" alt="Profile" className="profile-image" />
-
-
-
-      {/* Name & Title */}
-      <h1>Hey, I&apos;m Saicharith Vaitla</h1>
-      <h2 className="animated-text">
-        {text}
-        {showCursor && <span className="cursor">|</span>} {/* Cursor disappears when showCursor is false */}
-      </h2>
-    </header>
+    <div className="page page--home">
+      <Navbar />
+      <header className="hero">
+        <img src="/images/profile.jpg" alt={profile.name} className="profile-image" />
+        <h1 className="hero__name">Hey, I&apos;m {profile.name}</h1>
+        <h2 className="hero__role" aria-label={profile.roles.join(", ")}>
+          <span aria-hidden="true">{text}</span>
+          <span className="cursor" aria-hidden="true" />
+        </h2>
+        <p className="hero__current">
+          Currently <strong>AI Workflow Engineer</strong> at the University of Nebraska–Lincoln
+        </p>
+        <div className="hero__actions">
+          <Link to="/projects" className="btn-outline">View my work</Link>
+          <a href={profile.links.email} className="btn-solid">Get in touch</a>
+        </div>
+        <SocialLinks />
+      </header>
+    </div>
   );
-
 }
 
 export default Header;

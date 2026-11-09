@@ -1,179 +1,119 @@
-/* About Page Layout */
-.about-page {
-  display: flex;
-  flex-direction: column;
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 5rem);
   align-items: center;
-  justify-content: center;
-  background-color: #0f131e;
-  height: 100vh;
-  padding-top: 50px;
-  color: white;
-}
-
-/* Navigation Bar */
-.nav-bar {
-  position: fixed;
-  top: 0;
-  right: 20px;
-  display: flex;
-  gap: 20px;
-}
-
-.nav-link {
-  text-decoration: none;
-  font-size: 20px;
-  color: white;
-  transition: 0.3s ease;
-}
-
-.nav-link:hover, .nav-link.active {
-  color: tomato;
-}
-
-/* About container layout */
-.about-container {
-  display: flex;
-  width: 90%;
-  min-width: 200px;
-  justify-content: space-between;
-  align-items: center;
-  gap: 60px;
+  max-width: 1200px;
+  min-height: calc(100vh - var(--nav-h));
   margin: 0 auto;
-  padding: 50px 20px;
-  height: 70vh;
+  padding: 3rem clamp(1.25rem, 5vw, 3rem);
 }
 
-/* Left side content */
-.about-content {
-  flex: 1;
-  min-width: 45%;
-  padding: 20px;
+.about__text h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin: 0 0 1.25rem;
 }
 
-.about-content h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: white;
+.about__summary {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  line-height: 1.75;
+  color: #d5d9e3;
+  margin-bottom: 2rem;
 }
 
-.about-content p {
-  font-size: 1.2rem;
-  line-height: 1.5;
-  color: #e0e0e0;
-  min-width: 60px;
-  max-width: 600px;
+.about__text .social-links {
+  justify-content: flex-start;
 }
 
-.about-text {
-  font-size: 1.5rem;
-  line-height: 2rem;
-  margin-left: 80px;
-  color: #e0e0e0;
-  min-width: 60px;
-  max-width: 700px;
-}
-
-/* Right side carousel */
-.education-carousel {
-  flex: 1;
-  max-width: 400px;
-  margin-left: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.education-carousel img {
-  width: 300px;
-  height: auto;
-  margin: 0 auto;
-  object-fit: contain;
-  display: block;
-}
-
-/* Caption styling */
-.carousel-caption {
-  position: relative;
+.about__education {
   text-align: center;
-  margin-top: 20px;
-  color: white;
-  padding: 0;
-  position: static;
-  font-size: 1.5rem;
 }
 
-.carousel-caption h3 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+.about__education-title {
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
 }
 
-.carousel-caption p {
-  font-size: 1.2rem;
+/* Carousel: keep controls inside the component instead of floating off-screen */
+.edu-carousel {
+  padding: 0 3rem 2.5rem;
 }
 
-/* Navigation Arrows */
-.carousel-control-prev, .carousel-control-next {
-  width: 40px;
-  height: 40px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.carousel-control-prev {
-  left: -50px;
-  position: fixed; /* Keep arrow position fixed */
-}
-
-.carousel-control-next {
-  right: -50px;
-  position: fixed; /* Keep arrow position fixed */
-}
-
-/* Add hover effect */
-.carousel-control-prev:hover, .carousel-control-next:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-/* Update responsive design */
-@media (max-width: 900px) {
-  .about-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .about-content, .education-carousel {
-    max-width: 100%;
-  }
-
-  .social-sidebar {
-    flex-direction: row;
-    position: static;
-    justify-content: center;
-    gap: 20px;
-  }
-}
-
-/* Social Media Sidebar */
-.social-sidebar {
-  position: fixed;
-  left: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+.edu-card {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  align-items: center;
+  padding: 0.5rem;
 }
 
-.social-sidebar a {
-  color: white;
-  transition: 0.3s ease;
+.edu-card__img {
+  width: min(240px, 100%);
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 16px;
+  padding: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
-.social-sidebar a:hover {
-  color: 	#0040ff; /* Blue hover effect */
-  transform: scale(1.1);
+.edu-card h3 {
+  font-size: 1.5rem;
+  margin: 0 0 0.25rem;
+}
+
+.edu-card__detail {
+  color: var(--text);
+  margin: 0;
+}
+
+.edu-card__years {
+  color: var(--text-muted);
+  margin: 0.25rem 0 0;
+}
+
+.edu-carousel .carousel-control-prev,
+.edu-carousel .carousel-control-next {
+  width: 2.5rem;
+  height: 2.5rem;
+  top: 40%;
+  bottom: auto;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  opacity: 1;
+}
+
+.edu-carousel .carousel-control-prev:hover,
+.edu-carousel .carousel-control-next:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.edu-carousel .carousel-control-prev-icon,
+.edu-carousel .carousel-control-next-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.edu-carousel .carousel-indicators {
+  margin-bottom: 0;
+}
+
+.edu-carousel .carousel-indicators [data-bs-target] {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 0;
+}
+
+@media (max-width: 900px) {
+  .about {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 2rem;
+  }
+
+  .about__text .social-links {
+    justify-content: center;
+  }
 }

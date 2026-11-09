@@ -1,114 +1,115 @@
-import { Link } from "react-router-dom";
-import "../styles/Projects.css"; // Import the CSS file
+import Navbar from "./Navbar";
+import { experiences, projects, profile } from "../data/profile";
+import "../styles/Projects.css";
 
-const experiences = [
-  {
-    company: "Election Systems & Software",
-    role: "Software Developer",
-    duration: "May 2024 - Present",
-    description: [
-      "At Election Systems & Software (ES&S), I develop and optimize scalable software solutions for voter registration and election management systems. My work includes designing and developing front-end components, implementing RESTful APIs, optimizing SSRS reports, and improving system performance. I collaborate with cross-functional teams to integrate backend services, automate testing using Jest, JUnit, and Postman, and ensure seamless deployments through version control and CI/CD pipelines. My contributions have led to improved system efficiency, reduced page load times, and enhanced data visualization for election-related application."
-    ],
-    image: "/images/ess.jpg", // Update with actual image path
-  },
-  {
-    company: "University of Nebraska - Lincoln",
-    role: "Full Stack Software Developer",
-    duration: "Jan 2024 - Jan 2025",
-    description: [
-      "As a Full Stack Developer at the University of Nebraska - Lincoln, I designed and developed scalable web applications using React, C#, and AWS. My work included building responsive user interfaces, deploying cloud-based solutions with Docker and Kubernetes, and optimizing system performance. I implemented real-time data visualization and QAQC modules, improving data accuracy and accessibility. Additionally, I conducted unit and integration testing using Jest and JUnit, ensuring system reliability and seamless functionality across applications."
-    ],
-    image: "/images/Image.jpg",
-  },
-  {
-    company: "University of Nebraska - Lincoln",
-    role: "Undergraduate Research Assistant",
-    duration: "Jan 2023 - Jan 2024",
-    description: [
-      "As an Undergraduate Research Assistant at the University of Nebraska - Lincoln, I worked on two distinct research projects:"
-    ],
-    bulletPoints: [
-      "KLEE & Symbolic Execution: I conducted research on symbolic execution with KLEE, optimizing its integration and execution speed for software verification. I deployed KLEE in a Docker environment, reducing setup time by 40%, and contributed to its documentation and implementation within existing projects.",
-      "Eye-Tracking & UML Diagrams: I analyzed user interaction patterns through eye-tracking studies to refine UML diagrams, improving interpretability and reducing cognitive load by 15%. I also designed and implemented relational database architecture to enhance the integrity of eye-tracking data, increasing accuracy by 10%. Additionally, I refined UML testing methodologies to align diagram structures with user cognition, leading to better training outcomes."
-    ],
-    image: "/images/Image.jpg",
-  },
-];
+function initials(name) {
+  return name
+    .replace(/[^A-Za-z ]/g, " ")
+    .split(/\s+/)
+    .filter((w) => w && w[0] === w[0].toUpperCase())
+    .slice(0, 3)
+    .map((w) => w[0])
+    .join("");
+}
 
-const projects = [
-  {
-    title: "MAARS Web Application:",
-    description: "Built a scalable, component-based web application using Angular, TypeScript, and SCSS, improving UI performance and maintainability. Developed reusable Angular services, including a Google Maps Loader Service, which optimized API call latency and map rendering.",
-  },
-  {
-    title: "E-commerce MVC Application:",
-    description: "Developed NutriActive Supplements, an eCommerce web application using C#, ASP.NET MVC, and SQL Server, enabling seamless product browsing and transactions. Implemented secure authentication, optimized search functionality, and enhanced database performance, reducing query execution time by 20%.",
-  },
-  {
-    title: "Bumper Cars Invoice System:",
-    description: "Designed a Java-based invoice processing system, implementing OOP principles, inheritance, and polymorphism for managing various purchase types. Developed a relational database schema in SQL Server, reducing query execution time by 30% and improving system stability with exception handling and unit tests using JUnit.",
-  },
-];
+function Tags({ tags }) {
+  if (!tags?.length) return null;
+  return (
+    <ul className="tags">
+      {tags.map((t) => (
+        <li key={t}>{t}</li>
+      ))}
+    </ul>
+  );
+}
+
+function BulletList({ items }) {
+  return (
+    <ul className="exp-card__bullets">
+      {items.map((b) => (
+        <li key={b}>{b}</li>
+      ))}
+    </ul>
+  );
+}
+
+function ExperienceCard({ exp }) {
+  return (
+    <article className={`exp-card${exp.current ? " exp-card--current" : ""}`}>
+      <div className="exp-card__logo">
+        {exp.image ? (
+          <img src={exp.image} alt="" />
+        ) : (
+          <span aria-hidden="true" className={exp.badge?.length > 3 ? "is-long" : ""}>
+            {exp.badge || initials(exp.company)}
+          </span>
+        )}
+      </div>
+
+      <div className="exp-card__body">
+        <div className="exp-card__head">
+          <div>
+            <h3 className="exp-card__role">{exp.role}</h3>
+            <p className="exp-card__company">
+              {exp.company}
+              {exp.type && <span> · {exp.type}</span>}
+            </p>
+          </div>
+          {exp.current && <span className="badge-current">Current</span>}
+        </div>
+        <p className="exp-card__meta">
+          {exp.duration}
+          {exp.location && <> · {exp.location}</>}
+        </p>
+
+        {exp.summary && <p className="exp-card__summary">{exp.summary}</p>}
+        {exp.bullets && <BulletList items={exp.bullets} />}
+        {exp.groups?.map((g) => (
+          <div key={g.title} className="exp-card__group">
+            <h4>{g.title}</h4>
+            <BulletList items={g.bullets} />
+          </div>
+        ))}
+        <Tags tags={exp.tags} />
+      </div>
+    </article>
+  );
+}
 
 function ExperienceProjects() {
   return (
-    <div className="experience-projects-page">
-      {/* Navigation */}
-      <nav className="nav-bar">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/skills">Skills</Link>
-      </nav>
+    <div className="page page--projects">
+      <Navbar />
 
-      {/* Experience Section */}
-      <h1 className="section-title">Experience</h1>
-      <div className="experience-container">
-        {experiences.map((exp, index) => (
-          <div key={index} className="experience-card">
-            <img src={exp.image} alt={exp.company} className="experience-img" />
-            <div className="experience-details">
-              <h2 className="company-name">{exp.company}</h2>
-              <p className="role">{exp.role}</p>
-              <p className="duration">{exp.duration}</p>
-              <ul>
-                {exp.description.map((desc, i) => (
-                  <p key={i}>{desc}</p>
-                ))}
-                {/* Add bullet points only if they exist */}
-                {exp.bulletPoints && (
-                  <ul>
-                    {exp.bulletPoints.map((point, i) => (
-                      <li key={i}>{point}</li>
-                    ))}
-                  </ul>
-                )}
-              </ul>
-            </div>
-          </div>
-        ))}
-      </div>
+      <main className="endeavors">
+        <h1 className="section-title">Experience</h1>
+        <div className="exp-list">
+          {experiences.map((exp) => (
+            <ExperienceCard key={`${exp.company}-${exp.role}`} exp={exp} />
+          ))}
+        </div>
 
-      {/* Projects Section */}
-      <h1 className="section-title">Projects</h1>
-      <div className="projects-container">
-        {projects.map((project, index) => (
-          <div key={index} className="project-card">
-            <h2 className="project-title">{project.title}</h2>
-            <p className="project-description">{project.description}</p>
-          </div>
-        ))}
-      </div>
+        <h1 className="section-title">Projects</h1>
+        <div className="project-grid">
+          {projects.map((project) => (
+            <article key={project.title} className="project-card">
+              <h3 className="project-card__title">{project.title}</h3>
+              <p className="project-card__desc">{project.description}</p>
+              <Tags tags={project.tags} />
+            </article>
+          ))}
+        </div>
 
-      {/* Add this new section */}
-      <a
-        href="https://github.com/SCVaitla"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="more-projects-link"
-      >
-        <span>For more projects</span>
-        <i className="fab fa-github"></i>
-      </a>
+        <a
+          href={profile.links.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="more-projects-link"
+        >
+          <span>More projects on GitHub</span>
+          <i className="fab fa-github" aria-hidden="true" />
+        </a>
+      </main>
     </div>
   );
 }
